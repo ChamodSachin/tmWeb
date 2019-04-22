@@ -1,0 +1,16 @@
+/home/chamod/Projects/TMWeb/TMWeb/bin/TMWeb.dll
+/home/chamod/Projects/TMWeb/TMWeb/bin/TMWeb.pdb
+/home/chamod/Projects/TMWeb/TMWeb/bin/Newtonsoft.Json.dll
+/home/chamod/Projects/TMWeb/TMWeb/bin/System.Net.Http.Formatting.dll
+/home/chamod/Projects/TMWeb/TMWeb/bin/System.Web.Http.dll
+/home/chamod/Projects/TMWeb/TMWeb/bin/System.Web.Http.WebHost.dll
+/home/chamod/Projects/TMWeb/TMWeb/bin/Newtonsoft.Json.pdb
+/home/chamod/Projects/TMWeb/TMWeb/bin/Newtonsoft.Json.xml
+/home/chamod/Projects/TMWeb/TMWeb/bin/System.Net.Http.Formatting.xml
+/home/chamod/Projects/TMWeb/TMWeb/bin/System.Web.Http.xml
+/home/chamod/Projects/TMWeb/TMWeb/bin/System.Web.Http.WebHost.xml
+/home/chamod/Projects/TMWeb/TMWeb/obj/Debug/TMWeb.csproj.CoreCompileInputs.cache
+/home/chamod/Projects/TMWeb/TMWeb/obj/Debug/TMWeb.csproj.CopyComplete
+/home/chamod/Projects/TMWeb/TMWeb/obj/Debug/TMWeb.dll
+/home/chamod/Projects/TMWeb/TMWeb/obj/Debug/TMWeb.pdb
+/home/chamod/Projects/TMWeb/TMWeb/obj/Debug/TMWeb.csprojAssemblyReference.cache

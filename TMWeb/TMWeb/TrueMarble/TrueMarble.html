@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>True Marble</title>
+    <style>
+          body
+            {
+                background-color : blue;
+                color : navy;
+                font-size : 24px;
+                text-align : center ;
+                vertical-align : top ;
+                position : absolute ;
+                // Settings to keep everything nicely aligned and centered
+                // relies on using adequate div tags
+                top : 50%;
+                left : 50%;
+                transform : translateX ( -50%) translateY ( -50%);
+                /* Firefox */
+                display : - mozbox ;
+                - mozbox - box - pack : center ;
+                - mozbox - box - align : center ;
+                - moz - transform : translateX ( -50%) translateY ( -50%); 
+                 /* Safari , chrome , Opera */
+                display : - webkit - box ;
+                - webkit - box - pack : center ;
+                - webkit - box - align : center ;
+                - webkit - transform : translateX ( -50%) translateY ( -50%);
+           }
+           
+           .arrow
+            {
+                background-color : Navy;
+                border : none ;
+                color : blue;
+                font-size : 22px;
+            }
+    </style>
+        
+    <script language="JavaScript" type="text/JavaScript">
+            function init(){
+                //alert("Init Initialized");
+                req = null;
+                req = new XMLHttpRequest();
+                dest = "/TMWeb/0/0/0" //destination function
+                req.open("GET", dest, true);
+                req.onreadystatechange = callback;
+                req.send();
+            }
+            
+            function callback(){
+                if (req.readyState == 4){
+                        if (req.status == 200){
+                            var response = JSON.parse(req.responseText);
+                            pic.src = "data:image/png; base64," + response ;
+                        }
+                        else{
+                            alert("Error Occured!  " + req.responseText);
+                        }
+                }
+            }
+    </script>
+        
+</head>
+    
+<body onload="init()">
+    <div>
+    <br>
+    <button id="clicker" class="arrow" name="clicker">Refresh</button>
+    <img src="" id="pic" height="512px" width="512px" name="pic">
+    <select class="arrow">
+            <option id="1">1</option>
+            <option id="2">2</option>
+            <option id="3">3</option>
+            <option id="4">4</option>
+            <option id="5">5</option>
+            <option id="6">6</option>
+    </select>
+    </div>
+        
+    <input type="hidden" value="0">
+    <input type="hidden" value="0">
+</body>
+</html>

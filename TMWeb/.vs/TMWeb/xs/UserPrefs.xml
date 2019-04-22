@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{5C3E37F2-77BF-4823-B7F8-0A96362DEF55}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TMWeb/TrueMarble/TrueMarble.html">
+    <Files>
+      <File FileName="TMWeb/Controllers/DummyController.cs" Line="46" Column="25" />
+      <File FileName="TMWeb/TrueMarble/TrueMarble.html" Line="43" Column="19" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TMWeb" expanded="True">
+            <Node name="TMWeb" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Resources" expanded="True" />
+              <Node name="TrueMarble" expanded="True">
+                <Node name="TrueMarble.html" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.TMWeb PreferredExecutionTarget="firefox" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
