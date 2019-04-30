@@ -52,6 +52,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="TrueMarbleLibrary">
+      <HintPath>..\TrueMarbleLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -65,7 +68,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\DummyController.cs" />
+    <Compile Include="Controllers\TrueMarbleController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

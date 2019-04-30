@@ -49,7 +49,7 @@
             //zoom levels
                 req1 = null;
                 req1 = new XMLHttpRequest();
-                dest1 = "/TMWeb/Zoom";
+                dest1 = "/Tiles/levels";
                 req1.open("GET", dest1, false);
                 req1.onreadystatechange = callback1;
                 req1.send();
@@ -57,8 +57,7 @@
             //initial image
                 req = null;
                 req = new XMLHttpRequest();
-                //dest = "/TMWeb/" + levels.value + "/" + x.value + "/" + y.value; //destination function
-                destp = "/TMWeb";
+                destp = "/View";
                 req.open("POST", destp, true);
                 req.onreadystatechange = callback;
                 req.setRequestHeader("Content-type", "application/json");
@@ -103,8 +102,7 @@
             //zoom dimensions
                 req2 = null;
                 req2 = new XMLHttpRequest();
-                dest2 = "/TMWeb/zoom/" + levels.value;
-                destp2 = "/TMWeb/zoom/";
+                dest2 = "/Tiles/NumOfTiles/" + levels.value;
                 req2.open("GET", dest2, true);
                 req2.send();
             }
@@ -129,6 +127,8 @@
                 }else{
                     vert--;
                 }
+                x.value = vert;
+                init();
             }
             
             function rightButton(){
@@ -140,6 +140,7 @@
                     vert = 1;
                 }
                 x.value = vert;
+                init();
             }
             
             function upButton(){
@@ -150,6 +151,8 @@
                 }else{
                     hor--;
                 }
+                y.value = hor;
+                init();
             }
             
             function downButton(){
@@ -160,6 +163,8 @@
                 }else{
                     hor = 0;
                 }
+                y.value = hor;
+                init();
             }
             
     </script>
