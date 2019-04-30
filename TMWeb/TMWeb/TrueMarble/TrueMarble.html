@@ -39,15 +39,30 @@
     </style>
         
     <script language="JavaScript" type="text/JavaScript">
+            
             function init(){
                 //alert("Init Initialized");
+            
+                maxX = 0;
+                maxY = 0;
+            
+            //zoom levels
+                req1 = null;
+                req1 = new XMLHttpRequest();
+                dest1 = "/TMWeb/Zoom";
+                req1.open("GET", dest1, false);
+                req1.onreadystatechange = callback1;
+                req1.send();
+            
+            //initial image
                 req = null;
                 req = new XMLHttpRequest();
-                dest = "/TMWeb/0/0/0" //destination function
+                dest = "/TMWeb/" + levels.value + "/" + x.value + "/" + y.value; //destination function
                 req.open("GET", dest, true);
                 req.onreadystatechange = callback;
                 req.send();
             }
+            
             
             function callback(){
                 if (req.readyState == 4){
@@ -60,26 +75,111 @@
                         }
                 }
             }
+            
+            function callback1(){
+                if (req1.readyState == 4){
+                    if (req1.status == 200){
+                        var retVal = JSON.parse(req1.responseText);
+            
+                        var i;
+                        var total = 0;
+                        for (i =1; i<retVal+1; i++){
+                            levels.options[i] = new Option(i+1);
+                            total += retVal;
+                        }
+                        levels.value = parseInt(total/retVal);
+                        }
+                    }
+                    else{
+                        alert("Error Occured in zoom levels" + req1.responseText);
+                    }
+                }
+            
+            function zoomDim(){
+            //zoom dimensions
+                req2 = null;
+                req2 = new XMLHttpRequest();
+                //dest2 = "/TMWeb/zoom/" + levels.value;
+                destp2 = "/TMWeb/zoom/";
+                //req2.open("GET", dest2, true);
+                req2.open("POST", destp2, true);
+                req2.setRequestHeader("Content-type", "Application/JSON");
+                req2.setRequestHeader("Response-type", "Application/JSON");
+                req2.onreadystatechange = zoomDimCallback;
+                var msg = {"zoom" : levels.value};
+                req2.send(JSON.stringify(msg));
+            }
+            
+            function zoomDimCallback(){
+                if (req2.readyState == 4){
+                    if (req2.status == 200){
+                        var zoomArray = JSON.parse(req2.responseText);
+                        maxX = zoomArray["across"];
+                        maxY = zoomArray["down"];
+                    }else{
+                        alert ("Error in zoom Dimensions" + req2.responseText);
+                    }
+                }
+            }
+            
+            function leftButton(){
+                vert = x.value;
+            
+                if (vert==1){
+                    vert = maxX;
+                }else{
+                    vert--;
+                }
+            }
+            
+            function rightButton(){
+                vert = x.value;
+            
+                if (vert != maxX){
+                    vert++;
+                }else{
+                    vert = 1;
+                }
+                x.value = vert;
+            }
+            
+            function upButton(){
+                hor = y.value;
+            
+                if (hor == 1){
+                    hor = maxY;
+                }else{
+                    hor--;
+                }
+            }
+            
+            function downButton(){
+                hor = y.value;
+            
+                if (hor != maxY){
+                    hor++;
+                }else{
+                    hor = 0;
+                }
+            }
+            
     </script>
         
 </head>
     
-<body onload="init()">
+<body onload="init();">
     <div>
-    <br>
-    <button id="clicker" class="arrow" name="clicker">Refresh</button>
-    <img src="" id="pic" height="512px" width="512px" name="pic">
-    <select class="arrow">
-            <option id="1">1</option>
-            <option id="2">2</option>
-            <option id="3">3</option>
-            <option id="4">4</option>
-            <option id="5">5</option>
-            <option id="6">6</option>
-    </select>
+        <br>
+        <button id="up" class="arrow" onclick="upButton();" name="clicker">Up</button>
+        <button id="down" class="arrow" onclick="downButton();" name="clicker">Down</button>
+        <button id="left" class="arrow" onclick="leftButton();" name="clicker">Left</button>
+        <button id="right" class="arrow" onclick="rightButton();" name="clicker">Right</button>
+        
+        <img src="" id="pic" height="512px" width="512px" name="pic">
+        <select class="arrow" id="levels" onchange="zoomDim();"></select>
     </div>
         
-    <input type="hidden" value="0">
-    <input type="hidden" value="0">
+    <input type="hidden" id="x" value="0">
+    <input type="hidden" id="y" value="0">
 </body>
 </html>
