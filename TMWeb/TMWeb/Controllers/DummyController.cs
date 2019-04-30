@@ -57,8 +57,8 @@ namespace TMWeb.Controllers
          * function: will validate the zoom, and return the
          *           number of tiles across and down
          */
-        [HttpPost]
-        [Route("TMWeb/zoom/")]
+        [HttpGet]
+        [Route("TMWeb/zoom/{Zoom}")]
         public Dictionary<string, int> Get(int zoom)
         {
             Dictionary<string, int> ret = new Dictionary<string, int>();
