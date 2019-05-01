@@ -54,7 +54,11 @@
                 req1.onreadystatechange = callback1;
                 req1.send();
             
-            //initial image
+                loadImage();
+            }
+            
+            function loadImage(){
+                //initial image
                 req = null;
                 req = new XMLHttpRequest();
                 destp = "/View";
@@ -65,7 +69,6 @@
                 msg = {"zoom":levels.value , "x":x.value , "y":y.value};
                 req.send(JSON.stringify(msg));
             }
-            
             
             function callback(){
                 if (req.readyState == 4){
@@ -86,7 +89,7 @@
             
                         var i;
                         var total = 0;
-                        for (i =1; i<retVal; i++){
+                        for (i =0; i<retVal; i++){
                             levels.options[i] = new Option(i+1);
                             total += retVal;
                         }
@@ -103,16 +106,18 @@
                 req2 = null;
                 req2 = new XMLHttpRequest();
                 dest2 = "/Tiles/NumOfTiles/" + levels.value;
-                req2.open("GET", dest2, true);
+                req2.open("GET", dest2, false);
+                req2.onreadystatechange = zoomDimCallback;
                 req2.send();
+                loadImage();
             }
             
             function zoomDimCallback(){
                 if (req2.readyState == 4){
                     if (req2.status == 200){
                         var zoomArray = JSON.parse(req2.responseText);
-                        maxX = zoomArray["across"];
-                        maxY = zoomArray["down"];
+                        maxX = zoomArray["across"] -1;
+                        maxY = zoomArray["down"] -1;
                     }else{
                         alert ("Error in zoom Dimensions" + req2.responseText);
                     }
@@ -122,8 +127,8 @@
             function leftButton(){
                 vert = x.value;
             
-                if (vert==1){
-                    vert = maxX;
+                if (vert<1){
+                    alert("Limit Exceeded!");
                 }else{
                     vert--;
                 }
@@ -134,10 +139,10 @@
             function rightButton(){
                 vert = x.value;
             
-                if (vert != maxX){
+                if (vert==maxX){
                     vert++;
                 }else{
-                    vert = 1;
+                    alert("Limit Exceeded!");
                 }
                 x.value = vert;
                 init();
@@ -146,8 +151,8 @@
             function upButton(){
                 hor = y.value;
             
-                if (hor == 1){
-                    hor = maxY;
+                if (hor<1){
+                    alert("Limit Exceeded!");
                 }else{
                     hor--;
                 }
@@ -158,10 +163,10 @@
             function downButton(){
                 hor = y.value;
             
-                if (hor != maxY){
-                    hor++;
+                if (hor==maxY){
+                    alert("Limit Exceeded!");
                 }else{
-                    hor = 0;
+                    hor++;
                 }
                 y.value = hor;
                 init();

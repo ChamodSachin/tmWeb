@@ -1,7 +1,8 @@
 ﻿<Properties StartupConfiguration="{5C3E37F2-77BF-4823-B7F8-0A96362DEF55}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="TMWeb/TrueMarble/TrueMarble.html">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="TMWeb/TrueMarble/TrueMarble.html" Line="131" Column="24" />
+      <File FileName="TMWeb/TrueMarble/TrueMarble.html" Line="116" Column="50" />
+      <File FileName="TMWeb/Controllers/TrueMarbleController.cs" Line="53" Column="77" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.TMWeb PreferredExecutionTarget="firefox" />

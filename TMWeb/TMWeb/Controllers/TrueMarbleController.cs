@@ -50,17 +50,17 @@ namespace TMWeb.Contollers
         {
             try
             {
-                Dictionary<string, int> req1 = (Dictionary<string, int>)Request.Content.ReadAsAsync<Dictionary<string, int>>().Result;
-
-                if ((TrueMarble.GetNumTiles(zoom1, out int numTilesX, out int numTilesY) == 1) && (TrueMarble.GetNumTiles(zoom1, out int numX, out int numY) == 1))
+                Dictionary<string, int> req1 = new Dictionary<string, int>();
+                int numTilesX, numTilesY;
+                if ((TrueMarble.GetNumTiles(zoom1, out numTilesX, out numTilesY) == 1))
                 {
                     req1.Add("across", numTilesX);
-                    req1.Add("down", numY);
+                    req1.Add("down", numTilesY);
                     return req1;
                 }
                 else
                 {
-                    req1.Add("across", 0);
+                    req1.Add("across", 1);
                     req1.Add("down", 0);
                     return req1;
                 }
